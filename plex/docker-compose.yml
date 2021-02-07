@@ -1,0 +1,37 @@
+version: "3.1"
+services:
+  plex:
+    image: linuxserver/plex:latest
+    container_name: plex
+    environment:
+      - PUID=1000 #998
+      - PGID=100
+      - VERSION=docker
+      - UMASK_SET=022
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - HOME=/root
+      - LANGUAGE=en_US.UTF-8
+      - LANG=en_US.UTF-8
+      - TERM=xterm
+      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
+      - DEBIAN_FRONTEND=noninteractive
+      - PLEX_DOWNLOAD=https://downloads.plex.tv/plex-media-server-new
+      - PLEX_ARCH=amd64
+        #- PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="/config/Library/Application Support"
+      - PLEX_MEDIA_SERVER_HOME=/usr/lib/plexmediaserver
+      - PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS=6
+      - PLEX_MEDIA_SERVER_USER=abc
+      - PLEX_MEDIA_SERVER_INFO_VENDOR=Docker
+      - PLEX_MEDIA_SERVER_INFO_DEVICE="Docker Container (LinuxServer.io)"
+    volumes:
+      - /srv/dev-disk-by-label-data/.config/plex:/config
+      - /srv/dev-disk-by-label-data/Video/Movies:/movies
+      - /srv/dev-disk-by-label-data/Audio/Music:/music
+      - /srv/dev-disk-by-label-data/Audio/Podcasts:/podcasts
+      - /srv/dev-disk-by-label-data/Audio/Books:/audiobooks
+      - /srv/dev-disk-by-label-data/.config/plex:/transcode
+      - /srv/dev-disk-by-label-data/Video/TV-Shows:/tv
+    network_mode: "host"
+    ports:
+      - 32400:32400
+    restart: unless-stopped
