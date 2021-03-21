@@ -31,6 +31,7 @@ services:
       - /srv/dev-disk-by-label-data/Audio/Books:/audiobooks
       - /srv/dev-disk-by-label-data/.config/plex:/transcode
       - /srv/dev-disk-by-label-data/Video/TV-Shows:/tv
+      - /srv/dev-disk-by-label-data/Images:/images
     network_mode: "host"
     ports:
       - 32400:32400
