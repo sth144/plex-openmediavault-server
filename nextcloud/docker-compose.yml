@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  db:
+    image: mariadb
+    container_name: nextcloud-mariadb
+    ports:
+      - 3306:3306
+    volumes:
+      - /home/pi/Volumes/nextcloud/db:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    env_file:
+      - .env.MYSQL_ROOT_PASSWORD
+      - .env.MYSQL_PASSWORD
+    restart: unless-stopped
+
+  app:
+    image: nextcloud:latest
+    container_name: nextcloud-app
+    # TODO: give nextcloud its own network?
+    ports:
+      - 9443:443
+      - 9080:80
+    depends_on:
+      - db
+    volumes:
+      - ./config:/var/www/html/config
+      - /home/pi/Volumes/nextcloud/app:/var/www/html
+      - /home/pi/Volumes/nextcloud/custom_apps:/var/www/html/custom_apps
+      - /home/pi/Volumes/nextcloud/data:/var/www/html/data
+      - /home/pi/Volumes/nextcloud/themes:/var/www/html/themes
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - VIRTUAL_HOST=sthinds144.duckdns.org
+      # TODO: SSL with letsencrypt
+      #- LETSENCRYPT_HOST=sthinds144.duckdns.org
+      #- LETSENCRYPT_EMAIL=sthinds144@gmail.com
+    restart: unless-stopped
+
+volumes:
+  nextcloud:
+  db:
