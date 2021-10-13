@@ -24,14 +24,16 @@ services:
       - PLEX_MEDIA_SERVER_INFO_VENDOR=Docker
       - PLEX_MEDIA_SERVER_INFO_DEVICE="Docker Container (LinuxServer.io)"
     volumes:
-      - /srv/dev-disk-by-label-data/.config/plex:/config
       - /srv/dev-disk-by-label-data/Video/Movies:/movies
       - /srv/dev-disk-by-label-data/Audio/Music:/music
       - /srv/dev-disk-by-label-data/Audio/Podcasts:/podcasts
       - /srv/dev-disk-by-label-data/Audio/Books:/audiobooks
-      - /srv/dev-disk-by-label-data/.config/plex:/transcode
+      - /srv/dev-disk-by-label-data/Audio/Standup:/audio-standup
+      - /srv/dev-disk-by-label-data/Video:/video
       - /srv/dev-disk-by-label-data/Video/TV-Shows:/tv
       - /srv/dev-disk-by-label-data/Images:/images
+      - /srv/dev-disk-by-label-data/.config/plex:/config
+      - /srv/dev-disk-by-label-data/.config/plex:/transcode
     network_mode: "host"
     ports:
       - 32400:32400
