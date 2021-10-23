@@ -1,0 +1,5480 @@
+{
+	"annotations": {
+	  "list": [
+		{
+		  "builtIn": 1,
+		  "datasource": "-- Grafana --",
+		  "enable": true,
+		  "hide": true,
+		  "iconColor": "rgba(0, 211, 255, 1)",
+		  "name": "Annotations & Alerts",
+		  "type": "dashboard"
+		}
+	  ]
+	},
+	"editable": true,
+	"gnetId": null,
+	"graphTooltip": 0,
+	"id": 5,
+	"links": [],
+	"panels": [
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {
+			  "align": null,
+			  "filterable": false
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 8,
+		  "w": 12,
+		  "x": 0,
+		  "y": 0
+		},
+		"id": 94,
+		"options": {
+		  "showHeader": true
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "cpu_usage",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"title": "Panel Title",
+		"type": "table"
+	  },
+	  {
+		"collapsed": false,
+		"datasource": null,
+		"gridPos": {
+		  "h": 1,
+		  "w": 24,
+		  "x": 0,
+		  "y": 8
+		},
+		"id": 24,
+		"panels": [],
+		"title": "NAS",
+		"type": "row"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				}
+			  ]
+			},
+			"unit": "s"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 4,
+		  "w": 3,
+		  "x": 0,
+		  "y": 9
+		},
+		"id": 35,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_time_seconds{job=\"node_exporter_openmediavault\"} - node_boot_time_seconds{job=\"node_exporter_openmediavault\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Uptime",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"description": "",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 4,
+		  "w": 3,
+		  "x": 3,
+		  "y": 9
+		},
+		"id": 38,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "(((count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_openmediavault\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node_exporter_openmediavault\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_openmediavault\"}) by (cpu))",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU",
+		"type": "gauge"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 7,
+		  "w": 9,
+		  "x": 6,
+		  "y": 9
+		},
+		"id": 41,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_openmediavault\"}[5m])) * 100",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy System",
+			"refId": "A"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"user\",job=\"node_exporter_openmediavault\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy User",
+			"refId": "B"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"iowait\",job=\"node_exporter_openmediavault\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy IO-Wait",
+			"refId": "C"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=~\".*irq\",job=\"node_exporter_openmediavault\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy IRQs",
+			"refId": "D"
+		  },
+		  {
+			"expr": "sum (irate(node_cpu_seconds_total{mode!=\"idle\",mode!=\"user\",mode!=\"system\",mode!=\"iowait\",mode!=\"irq\",mode!=\"softirq\",job=\"node_exporter_openmediavault\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy Other",
+			"refId": "E"
+		  },
+		  {
+			"expr": "sum by (mode)(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node_exporter_openmediavault\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Idle",
+			"refId": "F"
+		  }
+		],
+		"title": "CPU",
+		"type": "timeseries"
+	  },
+	  {
+		"datasource": "Loki",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {},
+			"custom": {},
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": []
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 7,
+		  "w": 9,
+		  "x": 15,
+		  "y": 9
+		},
+		"id": 92,
+		"options": {
+		  "showLabels": false,
+		  "showTime": false,
+		  "sortOrder": "Descending",
+		  "wrapLogMessage": false
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "{host=\"openmediavault.local\", container_name=\"nextcloud-app\"}",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"title": "Logs",
+		"transformations": [],
+		"type": "logs"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "celsius"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 4,
+		  "x": 0,
+		  "y": 13
+		},
+		"id": 39,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "area",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_hwmon_temp_celsius{job=\"node_exporter_openmediavault\", chip=\"platform_coretemp_0\", sensor=\"temp1\"}",
+			"interval": "",
+			"legendFormat": "{{ chip }} {{ sensor }}",
+			"refId": "A"
+		  }
+		],
+		"title": "Temperature",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": []
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 4,
+		  "y": 13
+		},
+		"id": 40,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "count(count(node_cpu_seconds_total{job=\"node_exporter_openmediavault\"}) by (cpu))",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU Cores",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"max": 100,
+			"min": 0,
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				},
+				{
+				  "color": "#EAB839",
+				  "value": 90
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 4,
+		  "w": 3,
+		  "x": 0,
+		  "y": 16
+		},
+		"id": 42,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "100 - ((node_memory_MemAvailable_bytes{job=\"node_exporter_openmediavault\"} * 100) / node_memory_MemTotal_bytes{job=\"node_exporter_openmediavault\"})",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "",
+			"refId": "B"
+		  }
+		],
+		"title": "RAM",
+		"type": "gauge"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [
+			  {
+				"from": "",
+				"id": 1,
+				"text": "",
+				"to": "",
+				"type": 1
+			  }
+			],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				}
+			  ]
+			},
+			"unit": "bytes"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 4,
+		  "w": 3,
+		  "x": 3,
+		  "y": 16
+		},
+		"id": 43,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_openmediavault\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"title": "RAM",
+		"type": "stat"
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"unit": "bytes"
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 7,
+		  "w": 9,
+		  "x": 6,
+		  "y": 16
+		},
+		"hiddenSeries": false,
+		"id": 44,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_openmediavault\"}",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Total",
+			"refId": "A"
+		  },
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_openmediavault\"} - node_memory_MemFree_bytes{job=\"node_exporter_openmediavault\"} - (node_memory_Cached_bytes{job=\"node_exporter_openmediavault\"} + node_memory_Buffers_bytes{job=\"node_exporter_openmediavault\"})",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Used",
+			"refId": "B"
+		  },
+		  {
+			"expr": "node_memory_Cached_bytes{job=\"node_exporter_openmediavault\"} + node_memory_Buffers_bytes{job=\"node_exporter_openmediavault\"}",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Cache + Buffer",
+			"refId": "C"
+		  },
+		  {
+			"expr": "node_memory_MemFree_bytes{job=\"node_exporter_openmediavault\"}",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Free",
+			"refId": "D"
+		  },
+		  {
+			"expr": "(node_memory_SwapTotal_bytes{job=\"node_exporter_openmediavault\"} - node_memory_SwapFree_bytes{job=\"node_exporter_openmediavault\"})",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "SWAP Used",
+			"refId": "E"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "RAM",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"format": "bytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  },
+		  {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 6,
+		  "x": 0,
+		  "y": 20
+		},
+		"id": 46,
+		"options": {
+		  "displayMode": "gradient",
+		  "orientation": "horizontal",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showUnfilled": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"/srv/dev-disk-by-label-data\",fstype!=\"rootfs\",job=\"node_exporter_openmediavault\"} * 100) /            node_filesystem_size_bytes{mountpoint=\"/srv/dev-disk-by-label-data\",fstype!=\"rootfs\",job=\"node_exporter_openmediavault\"})",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk (O)",
+		"type": "bargauge"
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {}
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 7,
+		  "w": 6,
+		  "x": 0,
+		  "y": 23
+		},
+		"hiddenSeries": false,
+		"id": 48,
+		"interval": null,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_openmediavault\",device!~'rootfs',mountpoint=\"/srv/dev-disk-by-label-data\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_openmediavault\",device!~'rootfs',mountpoint=\"/srv/dev-disk-by-label-data\"})",
+			"format": "time_series",
+			"instant": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "{{mountpoint}}",
+			"refId": "A"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Disk (O) Used, 30 Days",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:301",
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": "100",
+			"min": "0",
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:302",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"unit": "binBps"
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 7,
+		  "w": 9,
+		  "x": 6,
+		  "y": 23
+		},
+		"hiddenSeries": false,
+		"id": 45,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [
+		  {
+			"$$hashKey": "object:68",
+			"alias": "/.*trans.*/",
+			"transform": "negative-Y"
+		  }
+		],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "irate(node_network_receive_bytes_total{job=\"node_exporter_openmediavault\"}[5m])*8",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "recv {{device}}",
+			"refId": "A"
+		  },
+		  {
+			"expr": "irate(node_network_transmit_bytes_total{job=\"node_exporter_RPi_main\"}[5m])*8",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "trans {{device}}}",
+			"refId": "B"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Network IO",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"format": "binBps",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  },
+		  {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"collapsed": false,
+		"datasource": null,
+		"gridPos": {
+		  "h": 1,
+		  "w": 24,
+		  "x": 0,
+		  "y": 30
+		},
+		"id": 6,
+		"panels": [],
+		"repeat": null,
+		"title": "Gateway Raspberry Pi",
+		"type": "row"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				}
+			  ]
+			},
+			"unit": "s"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 0,
+		  "y": 31
+		},
+		"id": 18,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_time_seconds{job=\"node_exporter_RPi_main\"} - node_boot_time_seconds{job=\"node_exporter_RPi_main\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Uptime",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"description": "",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 3,
+		  "x": 2,
+		  "y": 31
+		},
+		"id": 2,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "(((count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_RPi_main\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node_exporter_RPi_main\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_RPi_main\"}) by (cpu))",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU (5min)",
+		"type": "gauge"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 5,
+		  "y": 31
+		},
+		"id": 4,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_RPi_pc0\"}[5m])) * 100",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy System",
+			"refId": "A"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"user\",job=\"node_exporter_RPi_pc0\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy User",
+			"refId": "B"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"iowait\",job=\"node_exporter_RPi_main\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy IO-Wait",
+			"refId": "C"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=~\".*irq\",job=\"node_exporter_RPi_pc0\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy IRQs",
+			"refId": "D"
+		  },
+		  {
+			"expr": "sum (irate(node_cpu_seconds_total{mode!=\"idle\",mode!=\"user\",mode!=\"system\",mode!=\"iowait\",mode!=\"irq\",mode!=\"softirq\",job=\"node_exporter_RPi_pc0\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy Other",
+			"refId": "E"
+		  },
+		  {
+			"expr": "sum by (mode)(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node_exporter_RPi_pc0\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Idle",
+			"refId": "F"
+		  }
+		],
+		"title": "CPU (24hr)",
+		"type": "timeseries"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"max": 100,
+			"min": 0,
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				},
+				{
+				  "color": "#EAB839",
+				  "value": 90
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 9,
+		  "y": 31
+		},
+		"id": 8,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "100 - ((node_memory_MemAvailable_bytes{job=\"node_exporter_RPi_main\"} * 100) / node_memory_MemTotal_bytes{job=\"node_exporter_RPi_main\"})",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "",
+			"refId": "B"
+		  }
+		],
+		"title": "RAM (5min)",
+		"type": "gauge"
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"unit": "bytes"
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 11,
+		  "y": 31
+		},
+		"hiddenSeries": false,
+		"id": 14,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_RPi_main\"}",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Total",
+			"refId": "A"
+		  },
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_RPi_main\"} - node_memory_MemFree_bytes{job=\"node_exporter_RPi_main\"} - (node_memory_Cached_bytes{job=\"node_exporter_RPi_main\"} + node_memory_Buffers_bytes{job=\"node_exporter_RPi_main\"})",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Used",
+			"refId": "B"
+		  },
+		  {
+			"expr": "node_memory_Cached_bytes{job=\"node_exporter_RPi_main\"} + node_memory_Buffers_bytes{job=\"node_exporter_RPi_main\"}",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Cache + Buffer",
+			"refId": "C"
+		  },
+		  {
+			"expr": "node_memory_MemFree_bytes{job=\"node_exporter_RPi_main\"}",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Free",
+			"refId": "D"
+		  },
+		  {
+			"expr": "(node_memory_SwapTotal_bytes{job=\"node_exporter_RPi_main\"} - node_memory_SwapFree_bytes{job=\"node_exporter_RPi_main\"})",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "SWAP Used",
+			"refId": "E"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "RAM (24hr)",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:593",
+			"format": "bytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:594",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"unit": "binBps"
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 15,
+		  "y": 31
+		},
+		"hiddenSeries": false,
+		"id": 16,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [
+		  {
+			"$$hashKey": "object:68",
+			"alias": "/.*trans.*/",
+			"transform": "negative-Y"
+		  }
+		],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "irate(node_network_receive_bytes_total{job=\"node_exporter_RPi_main\"}[5m])*8",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "recv {{device}}",
+			"refId": "A"
+		  },
+		  {
+			"expr": "irate(node_network_transmit_bytes_total{job=\"node_exporter_RPi_main\"}[5m])*8",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "trans {{device}}}",
+			"refId": "B"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Network IO",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:833",
+			"format": "binBps",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:834",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 2,
+		  "w": 4,
+		  "x": 19,
+		  "y": 31
+		},
+		"id": 20,
+		"options": {
+		  "displayMode": "gradient",
+		  "orientation": "horizontal",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showUnfilled": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"/\",fstype!=\"rootfs\",job=\"node_exporter_RPi_main\"} * 100) /            node_filesystem_size_bytes{mountpoint=\"/\",fstype!=\"rootfs\",job=\"node_exporter_RPi_main\"})",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk",
+		"type": "bargauge"
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {}
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 4,
+		  "w": 4,
+		  "x": 19,
+		  "y": 33
+		},
+		"hiddenSeries": false,
+		"id": 84,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_RPi_main\",device=\"/dev/root\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_RPi_main\",device=\"/dev/root\"})",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "{{mountpoint}}",
+			"refId": "A"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Disk (O) Used, 30 Days",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:301",
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": "100",
+			"min": "0",
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:302",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "celsius"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 3,
+		  "x": 0,
+		  "y": 34
+		},
+		"id": 22,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "area",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_hwmon_temp_celsius{job=\"node_exporter_RPi_main\", chip=\"thermal_thermal_zone0\", sensor=\"temp0\"}",
+			"interval": "",
+			"legendFormat": "{{ chip }} {{ sensor }}",
+			"refId": "A"
+		  }
+		],
+		"title": "Temperature",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": []
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 3,
+		  "y": 34
+		},
+		"id": 10,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "count(count(node_cpu_seconds_total{job=\"node_exporter_RPi_main\"}) by (cpu))",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU Cores",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [
+			  {
+				"from": "",
+				"id": 1,
+				"text": "",
+				"to": "",
+				"type": 1
+			  }
+			],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				}
+			  ]
+			},
+			"unit": "bytes"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 9,
+		  "y": 34
+		},
+		"id": 12,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_RPi_pc0\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"title": "RAM",
+		"type": "stat"
+	  },
+	  {
+		"collapsed": false,
+		"datasource": null,
+		"gridPos": {
+		  "h": 1,
+		  "w": 24,
+		  "x": 0,
+		  "y": 37
+		},
+		"id": 28,
+		"panels": [],
+		"title": "Picocluster Raspberry Pi (master)",
+		"type": "row"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				}
+			  ]
+			},
+			"unit": "s"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 0,
+		  "y": 38
+		},
+		"id": 34,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_time_seconds{job=\"node_exporter_RPi_pc0\"} - node_boot_time_seconds{job=\"node_exporter_RPi_pc0\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Uptime",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"description": "",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 3,
+		  "x": 2,
+		  "y": 38
+		},
+		"id": 49,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "(((count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_RPi_pc0\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node_exporter_RPi_pc0\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_RPi_pc0\"}) by (cpu))",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU (5min)",
+		"type": "gauge"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 5,
+		  "y": 38
+		},
+		"id": 56,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_RPi_main\"}[5m])) * 100",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy System",
+			"refId": "A"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"user\",job=\"node_exporter_RPi_main\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy User",
+			"refId": "B"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"iowait\",job=\"node_exporter_RPi_main\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy IO-Wait",
+			"refId": "C"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=~\".*irq\",job=\"node_exporter_RPi_main\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy IRQs",
+			"refId": "D"
+		  },
+		  {
+			"expr": "sum (irate(node_cpu_seconds_total{mode!=\"idle\",mode!=\"user\",mode!=\"system\",mode!=\"iowait\",mode!=\"irq\",mode!=\"softirq\",job=\"node_exporter_RPi_main\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy Other",
+			"refId": "E"
+		  },
+		  {
+			"expr": "sum by (mode)(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node_exporter_RPi_main\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Idle",
+			"refId": "F"
+		  }
+		],
+		"title": "CPU (24hr)",
+		"type": "timeseries"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"max": 100,
+			"min": 0,
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				},
+				{
+				  "color": "#EAB839",
+				  "value": 90
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 9,
+		  "y": 38
+		},
+		"id": 66,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "100 - ((node_memory_MemAvailable_bytes{job=\"node_exporter_RPi_pc0\"} * 100) / node_memory_MemTotal_bytes{job=\"node_exporter_RPi_pc0\"})",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "",
+			"refId": "B"
+		  }
+		],
+		"title": "RAM (5min)",
+		"type": "gauge"
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"unit": "bytes"
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 11,
+		  "y": 38
+		},
+		"hiddenSeries": false,
+		"id": 77,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_RPi_pc0\"}",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Total",
+			"refId": "A"
+		  },
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_RPi_pc0\"} - node_memory_MemFree_bytes{job=\"node_exporter_RPi_pc0\"} - (node_memory_Cached_bytes{job=\"node_exporter_RPi_pc0\"} + node_memory_Buffers_bytes{job=\"node_exporter_RPi_pc0\"})",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Used",
+			"refId": "B"
+		  },
+		  {
+			"expr": "node_memory_Cached_bytes{job=\"node_exporter_RPi_pc0\"} + node_memory_Buffers_bytes{job=\"node_exporter_RPi_pc0\"}",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Cache + Buffer",
+			"refId": "C"
+		  },
+		  {
+			"expr": "node_memory_MemFree_bytes{job=\"node_exporter_RPi_pc0\"}",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Free",
+			"refId": "D"
+		  },
+		  {
+			"expr": "(node_memory_SwapTotal_bytes{job=\"node_exporter_RPi_pc0\"} - node_memory_SwapFree_bytes{job=\"node_exporter_RPi_pc0\"})",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "SWAP Used",
+			"refId": "E"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "RAM (24hr)",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:593",
+			"format": "bytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:594",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"unit": "binBps"
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 15,
+		  "y": 38
+		},
+		"hiddenSeries": false,
+		"id": 80,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [
+		  {
+			"$$hashKey": "object:68",
+			"alias": "/.*trans.*/",
+			"transform": "negative-Y"
+		  }
+		],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "irate(node_network_receive_bytes_total{job=\"node_exporter_RPi_pc0\"}[5m])*8",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "recv {{device}}",
+			"refId": "A"
+		  },
+		  {
+			"expr": "irate(node_network_transmit_bytes_total{job=\"node_exporter_RPi_pc0\"}[5m])*8",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "trans {{device}}}",
+			"refId": "B"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Network IO",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:833",
+			"format": "binBps",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:834",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 2,
+		  "w": 4,
+		  "x": 19,
+		  "y": 38
+		},
+		"id": 85,
+		"options": {
+		  "displayMode": "gradient",
+		  "orientation": "horizontal",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showUnfilled": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"/\",fstype!=\"rootfs\",job=\"node_exporter_RPi_pc0\"} * 100) /            node_filesystem_size_bytes{mountpoint=\"/\",fstype!=\"rootfs\",job=\"node_exporter_RPi_pc0\"})",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk",
+		"type": "bargauge"
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {}
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 4,
+		  "w": 4,
+		  "x": 19,
+		  "y": 40
+		},
+		"hiddenSeries": false,
+		"id": 86,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_RPi_pc0\",device=\"/dev/root\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_RPi_pc0\",device=\"/dev/root\"})",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "{{mountpoint}}",
+			"refId": "A"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Disk (O) Used, 30 Days",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:301",
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": "100",
+			"min": "0",
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:302",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "celsius"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 3,
+		  "x": 0,
+		  "y": 41
+		},
+		"id": 53,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "area",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_thermal_zone_temp{job=\"node_exporter_RPi_pc0\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"title": "Temperature",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": []
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 3,
+		  "y": 41
+		},
+		"id": 65,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "count(count(node_cpu_seconds_total{job=\"node_exporter_RPi_pc0\"}) by (cpu))",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU Cores",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [
+			  {
+				"from": "",
+				"id": 1,
+				"text": "",
+				"to": "",
+				"type": 1
+			  }
+			],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				}
+			  ]
+			},
+			"unit": "bytes"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 9,
+		  "y": 41
+		},
+		"id": 74,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_RPi_pc0\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"title": "RAM",
+		"type": "stat"
+	  },
+	  {
+		"collapsed": false,
+		"datasource": null,
+		"gridPos": {
+		  "h": 1,
+		  "w": 24,
+		  "x": 0,
+		  "y": 44
+		},
+		"id": 30,
+		"panels": [],
+		"title": "Picocluster Raspberry Pi (worker 1)",
+		"type": "row"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				}
+			  ]
+			},
+			"unit": "s"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 0,
+		  "y": 45
+		},
+		"id": 33,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_time_seconds{job=\"node_exporter_RPi_main\"} - node_boot_time_seconds{job=\"node_exporter_RPi_main\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Uptime",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"description": "",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 3,
+		  "x": 2,
+		  "y": 45
+		},
+		"id": 50,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "(((count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_RPi_pc1\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node_exporter_RPi_pc1\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_RPi_pc1\"}) by (cpu))",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU (5min)",
+		"type": "gauge"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 5,
+		  "y": 45
+		},
+		"id": 67,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_RPi_pc1\"}[5m])) * 100",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy System",
+			"refId": "A"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"user\",job=\"node_exporter_RPi_pc1\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy User",
+			"refId": "B"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"iowait\",job=\"node_exporter_RPi_pc1\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy IO-Wait",
+			"refId": "C"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=~\".*irq\",job=\"node_exporter_RPi_pc1\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy IRQs",
+			"refId": "D"
+		  },
+		  {
+			"expr": "sum (irate(node_cpu_seconds_total{mode!=\"idle\",mode!=\"user\",mode!=\"system\",mode!=\"iowait\",mode!=\"irq\",mode!=\"softirq\",job=\"node_exporter_RPi_pc1\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy Other",
+			"refId": "E"
+		  },
+		  {
+			"expr": "sum by (mode)(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node_exporter_RPi_pc1\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Idle",
+			"refId": "F"
+		  }
+		],
+		"title": "CPU (24hr)",
+		"type": "timeseries"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"max": 100,
+			"min": 0,
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				},
+				{
+				  "color": "#EAB839",
+				  "value": 90
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 9,
+		  "y": 45
+		},
+		"id": 72,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "100 - ((node_memory_MemAvailable_bytes{job=\"node_exporter_RPi_pc1\"} * 100) / node_memory_MemTotal_bytes{job=\"node_exporter_RPi_pc1\"})",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "",
+			"refId": "B"
+		  }
+		],
+		"title": "RAM (5min)",
+		"type": "gauge"
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"unit": "bytes"
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 11,
+		  "y": 45
+		},
+		"hiddenSeries": false,
+		"id": 78,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_RPi_pc1\"}",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Total",
+			"refId": "A"
+		  },
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_RPi_pc1\"} - node_memory_MemFree_bytes{job=\"node_exporter_RPi_pc1\"} - (node_memory_Cached_bytes{job=\"node_exporter_RPi_pc1\"} + node_memory_Buffers_bytes{job=\"node_exporter_RPi_pc1\"})",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Used",
+			"refId": "B"
+		  },
+		  {
+			"expr": "node_memory_Cached_bytes{job=\"node_exporter_RPi_pc1\"} + node_memory_Buffers_bytes{job=\"node_exporter_RPi_pc1\"}",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Cache + Buffer",
+			"refId": "C"
+		  },
+		  {
+			"expr": "node_memory_MemFree_bytes{job=\"node_exporter_RPi_pc1\"}",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Free",
+			"refId": "D"
+		  },
+		  {
+			"expr": "(node_memory_SwapTotal_bytes{job=\"node_exporter_RPi_pc1\"} - node_memory_SwapFree_bytes{job=\"node_exporter_RPi_pc1\"})",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "SWAP Used",
+			"refId": "E"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "RAM (24hr)",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:593",
+			"format": "bytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:594",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"unit": "binBps"
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 15,
+		  "y": 45
+		},
+		"hiddenSeries": false,
+		"id": 81,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [
+		  {
+			"$$hashKey": "object:68",
+			"alias": "/.*trans.*/",
+			"transform": "negative-Y"
+		  }
+		],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "irate(node_network_receive_bytes_total{job=\"node_exporter_RPi_pc1\"}[5m])*8",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "recv {{device}}",
+			"refId": "A"
+		  },
+		  {
+			"expr": "irate(node_network_transmit_bytes_total{job=\"node_exporter_RPi_pc1\"}[5m])*8",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "trans {{device}}}",
+			"refId": "B"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Network IO",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:833",
+			"format": "binBps",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:834",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 2,
+		  "w": 4,
+		  "x": 19,
+		  "y": 45
+		},
+		"id": 87,
+		"options": {
+		  "displayMode": "gradient",
+		  "orientation": "horizontal",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showUnfilled": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"/\",fstype!=\"rootfs\",job=\"node_exporter_RPi_pc1\"} * 100) /            node_filesystem_size_bytes{mountpoint=\"/\",fstype!=\"rootfs\",job=\"node_exporter_RPi_pc1\"})",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk",
+		"type": "bargauge"
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {}
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 4,
+		  "w": 4,
+		  "x": 19,
+		  "y": 47
+		},
+		"hiddenSeries": false,
+		"id": 88,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_RPi_pc1\",device=\"/dev/root\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_RPi_pc1\",device=\"/dev/root\"})",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "{{mountpoint}}",
+			"refId": "A"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Disk (O) Used, 30 Days",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:301",
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": "100",
+			"min": "0",
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:302",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "celsius"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 3,
+		  "x": 0,
+		  "y": 48
+		},
+		"id": 55,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "area",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_thermal_zone_temp{job=\"node_exporter_RPi_pc1\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"title": "Temperature",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": []
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 3,
+		  "y": 48
+		},
+		"id": 68,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "count(count(node_cpu_seconds_total{job=\"node_exporter_RPi_pc1\"}) by (cpu))",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU Cores",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [
+			  {
+				"from": "",
+				"id": 1,
+				"text": "",
+				"to": "",
+				"type": 1
+			  }
+			],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				}
+			  ]
+			},
+			"unit": "bytes"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 9,
+		  "y": 48
+		},
+		"id": 75,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_RPi_pc1\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"title": "RAM",
+		"type": "stat"
+	  },
+	  {
+		"collapsed": false,
+		"datasource": null,
+		"gridPos": {
+		  "h": 1,
+		  "w": 24,
+		  "x": 0,
+		  "y": 51
+		},
+		"id": 32,
+		"panels": [],
+		"title": "Picocluster Raspberry Pi (worker 2)",
+		"type": "row"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				}
+			  ]
+			},
+			"unit": "s"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 0,
+		  "y": 52
+		},
+		"id": 36,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_time_seconds{job=\"node_exporter_RPi_pc2\"} - node_boot_time_seconds{job=\"node_exporter_RPi_pc2\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Uptime",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"description": "",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 3,
+		  "x": 2,
+		  "y": 52
+		},
+		"id": 51,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "(((count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_RPi_pc2\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node_exporter_RPi_pc2\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_RPi_pc2\"}) by (cpu))",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU (5min)",
+		"type": "gauge"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 5,
+		  "y": 52
+		},
+		"id": 69,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_RPi_pc2\"}[5m])) * 100",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy System",
+			"refId": "A"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"user\",job=\"node_exporter_RPi_pc2\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy User",
+			"refId": "B"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"iowait\",job=\"node_exporter_RPi_pc2\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy IO-Wait",
+			"refId": "C"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=~\".*irq\",job=\"node_exporter_RPi_pc2\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy IRQs",
+			"refId": "D"
+		  },
+		  {
+			"expr": "sum (irate(node_cpu_seconds_total{mode!=\"idle\",mode!=\"user\",mode!=\"system\",mode!=\"iowait\",mode!=\"irq\",mode!=\"softirq\",job=\"node_exporter_RPi_pc2\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy Other",
+			"refId": "E"
+		  },
+		  {
+			"expr": "sum by (mode)(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node_exporter_RPi_pc2\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Idle",
+			"refId": "F"
+		  }
+		],
+		"title": "CPU (24hr)",
+		"type": "timeseries"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"max": 100,
+			"min": 0,
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				},
+				{
+				  "color": "#EAB839",
+				  "value": 90
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 9,
+		  "y": 52
+		},
+		"id": 73,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "100 - ((node_memory_MemAvailable_bytes{job=\"node_exporter_RPi_pc2\"} * 100) / node_memory_MemTotal_bytes{job=\"node_exporter_RPi_pc2\"})",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "",
+			"refId": "B"
+		  }
+		],
+		"title": "RAM (5min)",
+		"type": "gauge"
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"unit": "bytes"
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 11,
+		  "y": 52
+		},
+		"hiddenSeries": false,
+		"id": 79,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_RPi_pc2\"}",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Total",
+			"refId": "A"
+		  },
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_RPi_pc2\"} - node_memory_MemFree_bytes{job=\"node_exporter_RPi_pc2\"} - (node_memory_Cached_bytes{job=\"node_exporter_RPi_pc2\"} + node_memory_Buffers_bytes{job=\"node_exporter_RPi_pc2\"})",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Used",
+			"refId": "B"
+		  },
+		  {
+			"expr": "node_memory_Cached_bytes{job=\"node_exporter_RPi_pc2\"} + node_memory_Buffers_bytes{job=\"node_exporter_RPi_pc2\"}",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Cache + Buffer",
+			"refId": "C"
+		  },
+		  {
+			"expr": "node_memory_MemFree_bytes{job=\"node_exporter_RPi_pc2\"}",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Free",
+			"refId": "D"
+		  },
+		  {
+			"expr": "(node_memory_SwapTotal_bytes{job=\"node_exporter_RPi_pc2\"} - node_memory_SwapFree_bytes{job=\"node_exporter_RPi_pc2\"})",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "SWAP Used",
+			"refId": "E"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "RAM (24hr)",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:593",
+			"format": "bytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:594",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"unit": "binBps"
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 15,
+		  "y": 52
+		},
+		"hiddenSeries": false,
+		"id": 82,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [
+		  {
+			"$$hashKey": "object:68",
+			"alias": "/.*trans.*/",
+			"transform": "negative-Y"
+		  }
+		],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "irate(node_network_receive_bytes_total{job=\"node_exporter_RPi_pc2\"}[5m])*8",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "recv {{device}}",
+			"refId": "A"
+		  },
+		  {
+			"expr": "irate(node_network_transmit_bytes_total{job=\"node_exporter_RPi_pc2\"}[5m])*8",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "trans {{device}}}",
+			"refId": "B"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Network IO",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:833",
+			"format": "binBps",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:834",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 2,
+		  "w": 4,
+		  "x": 19,
+		  "y": 52
+		},
+		"id": 90,
+		"options": {
+		  "displayMode": "gradient",
+		  "orientation": "horizontal",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showUnfilled": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"/\",fstype!=\"rootfs\",job=\"node_exporter_RPi_pc2\"} * 100) /            node_filesystem_size_bytes{mountpoint=\"/\",fstype!=\"rootfs\",job=\"node_exporter_RPi_pc2\"})",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk",
+		"type": "bargauge"
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {}
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 4,
+		  "w": 4,
+		  "x": 19,
+		  "y": 54
+		},
+		"hiddenSeries": false,
+		"id": 89,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_RPi_pc2\",device=\"/dev/root\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_RPi_pc2\",device=\"/dev/root\"})",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "{{mountpoint}}",
+			"refId": "A"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Disk (O) Used, 30 Days",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:301",
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": "100",
+			"min": "0",
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:302",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "celsius"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 3,
+		  "x": 0,
+		  "y": 55
+		},
+		"id": 70,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "area",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_thermal_zone_temp{job=\"node_exporter_RPi_pc2\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"title": "Temperature",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": []
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 3,
+		  "y": 55
+		},
+		"id": 71,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "count(count(node_cpu_seconds_total{job=\"node_exporter_RPi_pc2\"}) by (cpu))",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU Cores",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [
+			  {
+				"from": "",
+				"id": 1,
+				"text": "",
+				"to": "",
+				"type": 1
+			  }
+			],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				}
+			  ]
+			},
+			"unit": "bytes"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 9,
+		  "y": 55
+		},
+		"id": 76,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_RPi_pc2\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"title": "RAM",
+		"type": "stat"
+	  },
+	  {
+		"collapsed": false,
+		"datasource": null,
+		"gridPos": {
+		  "h": 1,
+		  "w": 24,
+		  "x": 0,
+		  "y": 58
+		},
+		"id": 26,
+		"panels": [],
+		"title": "Desktop",
+		"type": "row"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				}
+			  ]
+			},
+			"unit": "s"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 0,
+		  "y": 59
+		},
+		"id": 37,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_time_seconds{job=\"node_exporter_desktop\"} - node_boot_time_seconds{job=\"node_exporter_desktop\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Uptime",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"description": "",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 3,
+		  "x": 2,
+		  "y": 59
+		},
+		"id": 52,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "(((count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_desktop\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node_exporter_desktop\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_desktop\"}) by (cpu))",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU (5min)",
+		"type": "gauge"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 5,
+		  "y": 59
+		},
+		"id": 57,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_desktop\"}[5m])) * 100",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy System",
+			"refId": "A"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"user\",job=\"node_exporter_desktop\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy User",
+			"refId": "B"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"iowait\",job=\"node_exporter_desktop\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy IO-Wait",
+			"refId": "C"
+		  },
+		  {
+			"expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=~\".*irq\",job=\"node_exporter_desktop\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy IRQs",
+			"refId": "D"
+		  },
+		  {
+			"expr": "sum (irate(node_cpu_seconds_total{mode!=\"idle\",mode!=\"user\",mode!=\"system\",mode!=\"iowait\",mode!=\"irq\",mode!=\"softirq\",job=\"node_exporter_desktop\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Busy Other",
+			"refId": "E"
+		  },
+		  {
+			"expr": "sum by (mode)(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node_exporter_desktop\"}[5m])) * 100",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "Idle",
+			"refId": "F"
+		  }
+		],
+		"title": "CPU (24hr)",
+		"type": "timeseries"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"max": 100,
+			"min": 0,
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				},
+				{
+				  "color": "#EAB839",
+				  "value": 90
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 9,
+		  "y": 59
+		},
+		"id": 58,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "100 - ((node_memory_MemAvailable_bytes{job=\"node_exporter_desktop\"} * 100) / node_memory_MemTotal_bytes{job=\"node_exporter_desktop\"})",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "",
+			"refId": "B"
+		  }
+		],
+		"title": "RAM (5min)",
+		"type": "gauge"
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"unit": "bytes"
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 11,
+		  "y": 59
+		},
+		"hiddenSeries": false,
+		"id": 60,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_desktop\"}",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Total",
+			"refId": "A"
+		  },
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_desktop\"} - node_memory_MemFree_bytes{job=\"node_exporter_desktop\"} - (node_memory_Cached_bytes{job=\"node_exporter_desktop\"} + node_memory_Buffers_bytes{job=\"node_exporter_desktop\"})",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Used",
+			"refId": "B"
+		  },
+		  {
+			"expr": "node_memory_Cached_bytes{job=\"node_exporter_desktop\"} + node_memory_Buffers_bytes{job=\"node_exporter_desktop\"}",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Cache + Buffer",
+			"refId": "C"
+		  },
+		  {
+			"expr": "node_memory_MemFree_bytes{job=\"node_exporter_desktop\"}",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "RAM Free",
+			"refId": "D"
+		  },
+		  {
+			"expr": "(node_memory_SwapTotal_bytes{job=\"node_exporter_desktop\"} - node_memory_SwapFree_bytes{job=\"node_exporter_desktop\"})",
+			"hide": false,
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "SWAP Used",
+			"refId": "E"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "RAM (24hr)",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:593",
+			"format": "bytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:594",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"unit": "binBps"
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 15,
+		  "y": 59
+		},
+		"hiddenSeries": false,
+		"id": 61,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [
+		  {
+			"$$hashKey": "object:68",
+			"alias": "/.*trans.*/",
+			"transform": "negative-Y"
+		  }
+		],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "irate(node_network_receive_bytes_total{job=\"node_exporter_desktop\"}[5m])*8",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "recv {{device}}",
+			"refId": "A"
+		  },
+		  {
+			"expr": "irate(node_network_transmit_bytes_total{job=\"node_exporter_RPi_main\"}[5m])*8",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "trans {{device}}}",
+			"refId": "B"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Network IO",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:833",
+			"format": "binBps",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:834",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "percent"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 2,
+		  "w": 4,
+		  "x": 19,
+		  "y": 59
+		},
+		"id": 62,
+		"options": {
+		  "displayMode": "gradient",
+		  "orientation": "horizontal",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showUnfilled": true,
+		  "text": {}
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"/mnt/D\",fstype!=\"rootfs\",job=\"node_exporter_desktop\"} * 100) /            node_filesystem_size_bytes{mountpoint=\"/mnt/D\",fstype!=\"rootfs\",job=\"node_exporter_desktop\"})",
+			"interval": "",
+			"legendFormat": "{{mountpoint}}",
+			"refId": "A"
+		  },
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"/\",fstype!=\"rootfs\",job=\"node_exporter_desktop\"} * 100) /            node_filesystem_size_bytes{mountpoint=\"/\",fstype!=\"rootfs\",job=\"node_exporter_desktop\"})",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "{{mountpoint}}",
+			"refId": "B"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk (D)",
+		"type": "bargauge"
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {}
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 4,
+		  "w": 4,
+		  "x": 19,
+		  "y": 61
+		},
+		"hiddenSeries": false,
+		"id": 63,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.4.0",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_desktop\",device!~'rootfs',mountpoint=\"/mnt/D\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_desktop\",device!~'rootfs',mountpoint=\"/mnt/D\"})",
+			"interval": "",
+			"intervalFactor": 2,
+			"legendFormat": "{{mountpoint}}",
+			"refId": "A"
+		  },
+		  {
+			"expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_desktop\",device!~'rootfs',mountpoint=\"/\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_desktop\",device!~'rootfs',mountpoint=\"/\"})",
+			"hide": false,
+			"interval": "",
+			"legendFormat": "",
+			"refId": "B"
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Disk (D) Used, 30 Days",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"$$hashKey": "object:301",
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": "100",
+			"min": "0",
+			"show": true
+		  },
+		  {
+			"$$hashKey": "object:302",
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "celsius"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 3,
+		  "x": 0,
+		  "y": 62
+		},
+		"id": 54,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "area",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_hwmon_temp_celsius{job=\"node_exporter_desktop\", chip=\"platform_coretemp_0\", sensor=\"temp1\"}",
+			"interval": "",
+			"legendFormat": "{{ chip }} {{ sensor }}",
+			"refId": "A"
+		  }
+		],
+		"title": "Temperature",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": []
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 3,
+		  "y": 62
+		},
+		"id": 64,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "count(count(node_cpu_seconds_total{job=\"node_exporter_desktop\"}) by (cpu))",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU Cores",
+		"type": "stat"
+	  },
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {},
+			"mappings": [
+			  {
+				"from": "",
+				"id": 1,
+				"text": "",
+				"to": "",
+				"type": 1
+			  }
+			],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				}
+			  ]
+			},
+			"unit": "bytes"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 3,
+		  "w": 2,
+		  "x": 9,
+		  "y": 62
+		},
+		"id": 59,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "none",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.4.0",
+		"targets": [
+		  {
+			"expr": "node_memory_MemTotal_bytes{job=\"node_exporter_desktop\"}",
+			"interval": "",
+			"legendFormat": "",
+			"refId": "A"
+		  }
+		],
+		"title": "RAM",
+		"type": "stat"
+	  }
+	],
+	"refresh": false,
+	"schemaVersion": 27,
+	"style": "dark",
+	"tags": [],
+	"templating": {
+	  "list": []
+	},
+	"time": {
+	  "from": "now-24h",
+	  "to": "now"
+	},
+	"timepicker": {},
+	"timezone": "",
+	"title": "Resource Overview",
+	"uid": "UenQXXggz",
+	"version": 39
+  }

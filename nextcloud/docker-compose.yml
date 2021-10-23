@@ -16,16 +16,23 @@ services:
       - .env.MYSQL_ROOT_PASSWORD
       - .env.MYSQL_PASSWORD
     restart: unless-stopped
+  
+  redis:
+    image: redis:4.0-alpine
+    restart: always
+    command: redis-server --requirePass "password"
+    volumes:
+      - /home/sthinds/Volumes/nextcloud/redis:/var/lib/redis
 
   app:
     image: sthinds/nextcloud:latest
     container_name: nextcloud-app
-    # TODO: give nextcloud its own network?
     ports:
       - 9443:443
       - 9080:80
     depends_on:
       - db
+      - redis
     volumes:
       - ./config:/var/www/html/config
       - /home/sthinds/Volumes/nextcloud/app:/var/www/html
@@ -35,9 +42,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       - VIRTUAL_HOST=sthinds144.duckdns.org
-      # TODO: SSL with letsencrypt
-      #- LETSENCRYPT_HOST=sthinds144.duckdns.org
-      #- LETSENCRYPT_EMAIL=sthinds144@gmail.com
+      - REDIS_HOST=redis
+      - REDIS_HOST_PASSWORD=password
     restart: unless-stopped
 
 volumes:
