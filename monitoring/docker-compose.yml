@@ -85,3 +85,15 @@ services:
       - /etc/promtail/:/etc/promtail/
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
     command: -config.file=/etc/promtail/promtail.yaml
+  pushgateway:
+    image: prom/pushgateway:v1.0.1
+    restart: always
+    command:
+      - --persistence.file=/data/pushgateway.data
+      - --persistence.interval=1h
+    expose:
+      - 9091
+    ports:
+      - 9091:9091
+    volumes: 
+      - /home/sthinds/Volumes/pushgateway:/data
