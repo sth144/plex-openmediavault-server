@@ -18,10 +18,16 @@ scrape_configs:
       - targets: ["localhost:9090"]
   - job_name: "node_exporter_openmediavault"
     static_configs:
-      - targets: ["localhost:9100"]
+      - targets: [
+          "localhost:9100",
+          "localhost:9091"
+        ]
   - job_name: "node_exporter_RPi_pc0"
     static_configs:
-      - targets: ["pc0:9100"]
+      - targets: [
+          "pc0:9100",
+          "pc0:9091"
+        ]
   - job_name: "node_exporter_RPi_pc1"
     static_configs:
       - targets: ["pc1:9100"]
@@ -30,7 +36,10 @@ scrape_configs:
       - targets: ["pc2:9100"]
   - job_name: "node_exporter_RPi_main"
     static_configs:
-      - targets: ["home.assistant:9100"]
+      - targets: [
+          "home.assistant:9100",
+          "home.assistant:9091"
+        ]
   - job_name: "node_exporter_desktop"
     static_configs:
       - targets: [

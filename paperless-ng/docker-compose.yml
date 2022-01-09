@@ -1,0 +1,17 @@
+---
+version: "2.1"
+services:
+  paperless-ng:
+    image: lscr.io/linuxserver/paperless-ng
+    container_name: paperless-ng
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+      # - REDIS_URL
+    volumes:
+      - ./config:/config
+      - /home/sthinds/data/Documents/Paperless:/data
+    ports:
+      - 8001:8000
+    restart: unless-stopped
