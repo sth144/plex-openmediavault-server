@@ -1,0 +1,8 @@
+version: "3"
+services:
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    ports:
+      - 8002:8001
+    volumes:
+      - /home/sthinds/Volumes/redisinsight:/db

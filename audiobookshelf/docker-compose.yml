@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    ports:
+      - 13378:80
+    volumes:
+      - /srv/dev-disk-by-label-data/Audio/Books:/audiobooks
+      - /srv/dev-disk-by-label-data/Audio/Podcasts:/podcasts
+      - /srv/dev-disk-by-label-data/Audio/Documentation:/documentation
+      - /srv/dev-disk-by-label-data/Audio/Articles:/articles
+      - /srv/dev-disk-by-label-data/Audio/Papers:/papers
+      - /srv/dev-disk-by-label-data/.config/audiobookshelf/config:/config
+      - /srv/dev-disk-by-label-data/.config/audiobookshelf/metadata:/metadata

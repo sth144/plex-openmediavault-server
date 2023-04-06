@@ -1,4 +1,4 @@
-version: "3"
+version: "3.3"
 
 services:
   db:
@@ -19,8 +19,11 @@ services:
   
   redis:
     image: redis:4.0-alpine
+    ports:
+      - 6379:6379
     restart: always
-    command: redis-server --requirePass "password"
+    # TODO: secret password...
+    command: redis-server --requirePass "$REDIS_HOST_PASSWORD"
     volumes:
       - /home/sthinds/Volumes/nextcloud/redis:/var/lib/redis
 
@@ -43,7 +46,7 @@ services:
     environment:
       - VIRTUAL_HOST=sthinds144.duckdns.org
       - REDIS_HOST=redis
-      - REDIS_HOST_PASSWORD=password
+      - REDIS_HOST_PASSWORD=$REDIS_HOST_PASSWORD
     restart: unless-stopped
 
 volumes:

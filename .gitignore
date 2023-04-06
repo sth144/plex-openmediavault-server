@@ -2,3 +2,6 @@
 
 nextcloud/config
 openvpn/certs/*
+**/log/*
+**.log
+**/*.sqlite3

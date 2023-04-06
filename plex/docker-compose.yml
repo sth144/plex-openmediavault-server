@@ -29,11 +29,14 @@ services:
       - /srv/dev-disk-by-label-data/Audio/Podcasts:/podcasts
       - /srv/dev-disk-by-label-data/Audio/Books:/audiobooks
       - /srv/dev-disk-by-label-data/Audio/Standup:/audio-standup
+      # - /srv/dev-disk-by-label-data/Audio/Text-to-Speech:/audio-text-to-speech
+      - /srv/dev-disk-by-label-data/Audio/Documentation:/documentation
+      - /srv/dev-disk-by-label-data/Audio/Articles:/articles
       - /srv/dev-disk-by-label-data/Video:/video
       - /srv/dev-disk-by-label-data/Video/TV-Shows:/tv
       - /srv/dev-disk-by-label-data/Images:/images
       - /srv/dev-disk-by-label-data/.config/plex:/config
-      - /srv/dev-disk-by-label-data/.config/plex:/transcode
+      - /dev/shm:/transcode
     network_mode: "host"
     ports:
       - 32400:32400
