@@ -5,3 +5,12 @@ openvpn/certs/*
 **/log/*
 **.log
 **/*.sqlite3
+
+gitlab/data
+gitlab/config
+gitlab/postgresql
+gitlab/logs
+gitlab/redis
+
+paperless-ng/config
+

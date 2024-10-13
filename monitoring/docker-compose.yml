@@ -8,8 +8,8 @@ services:
     depends_on:
       - prometheus
     network_mode: "host"
-    ports:
-      - "3000:3000"
+    #ports:
+    #  - "3000:3000"
     volumes:
       - /home/sthinds/Volumes/grafana:/var/lib/grafana
   telegraf:
@@ -23,11 +23,11 @@ services:
     #   - influxdb
     depends_on:
       - influxdb
-    ports:
-      - 8092:8092/udp
-      - 8094:8094
-      - 8125:8125/udp
-      - 8086:8086
+    #ports:
+    #  - 8092:8092/udp
+    #  - 8094:8094
+    #  - 8125:8125/udp
+    #- 8086:8086
     network_mode: "host"
   chronograf:
     image: chronograf:latest
@@ -47,8 +47,8 @@ services:
     user: "$UID:$GID"
     container_name: prometheus
     network_mode: "host"
-    ports:
-      - 9090:9090
+    #ports:
+    #  - 9090:9090
     command: --web.enable-admin-api --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.retention.time=30d
     volumes:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
@@ -57,8 +57,8 @@ services:
   influxdb:
     image: influxdb:1.8.4
     restart: unless-stopped
-    ports:
-      - 8086:8086
+    #ports:
+    #  - 8086:8086
     volumes:
       - /home/sthinds/Volumes/influxdb:/var/lib/influxdb
     environment:
@@ -70,8 +70,8 @@ services:
   loki:
     image: grafana/loki:2.0.0
     restart: always
-    ports:
-      - 3100:3100
+    #ports:
+    #  - 3100:3100
     command: -config.file=/etc/loki/local-config.yaml
     network_mode: host
     volumes:

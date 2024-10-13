@@ -28,7 +28,8 @@ services:
       - /home/sthinds/Volumes/nextcloud/redis:/var/lib/redis
 
   app:
-    image: sthinds/nextcloud:latest
+    build: .
+    #image: sthinds/nextcloud:latest
     container_name: nextcloud-app
     ports:
       - 9443:443
