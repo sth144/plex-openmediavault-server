@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.7"
 
 services:
   gitlab:
@@ -9,32 +9,32 @@ services:
       - "11080:80"
       - "11022:22"
     volumes:
-      - ./config:/etc/gitlab
-      - ./logs:/var/log/gitlab
-      - ./data:/var/opt/gitlab
+      - /home/sthinds/Volumes/gitlab/config:/etc/gitlab
+      - /home/sthinds/Volumes/gitlab/logs:/var/log/gitlab
+      - /home/sthinds/Volumes/gitlab/data:/var/opt/gitlab
     depends_on:
-      - postgres
+      - postgresql
       - redis
 
   gitlab-runner:
     image: 'gitlab/gitlab-runner:latest'
     restart: always
     volumes:
-      - './runner:/etc/gitlab-runner'
+      - /home/sthinds/Volumes/gitlab/runner:/etc/gitlab-runner
     command: ["run", "--user=gitlab-runner", "--working-directory=/home/gitlab-runner"]
 
   postgresql:
-    image: postgres:12
+    image: postgres:latest
     restart: always
     environment:
       POSTGRES_USER: gitlab
       POSTGRES_PASSWORD: gitlab
       POSTGRES_DB: gitlabhq_production
     volumes:
-      - ./postgresql:/var/lib/postgresql
+      - /home/sthinds/Volumes/gitlab/postgresql:/var/lib/postgresql
 
   redis:
-    image: redis:alpine
+    image: redis:latest
     restart: always
     volumes:
-      - ./redis:/data
+      - /home/sthinds/Volumes/gitlab/redis:/data

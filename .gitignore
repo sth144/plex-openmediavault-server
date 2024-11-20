@@ -11,6 +11,7 @@ gitlab/config
 gitlab/postgresql
 gitlab/logs
 gitlab/redis
+gitlab/runner
 
 paperless-ng/config
 

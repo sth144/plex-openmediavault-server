@@ -1,4 +1,4 @@
-version: "3"
+version: "2.4"
 services:
   grafana:
     image: grafana/grafana:latest
@@ -68,7 +68,8 @@ services:
       - INFLUXDB_ADMIN_PASSWORD=password
     network_mode: "host"  
   loki:
-    image: grafana/loki:2.0.0
+    #image: grafana/loki:2.0.0
+    image: grafana/loki:latest
     restart: always
     #ports:
     #  - 3100:3100
@@ -78,7 +79,8 @@ services:
       - ./config/loki-config.yaml:/etc/loki/config.yaml
       - /home/sthinds/Volumes/loki:/data/loki
   promtail:
-    image: grafana/promtail:2.0.0
+    #image: grafana/promtail:2.0.0
+    image: grafana/promtail:latest
     restart: always
     ports: 
       - 10080:9080
