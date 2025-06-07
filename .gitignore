@@ -7,7 +7,9 @@ openvpn/certs/*
 **/*.sqlite3
 
 gitlab/data
-gitlab/config
+gitlab/config/gitlab-secrets.json
+gitlab/config/initial_root_password
+gitlab/config/ssh_*
 gitlab/postgresql
 gitlab/logs
 gitlab/redis
@@ -15,3 +17,4 @@ gitlab/runner
 
 paperless-ng/config
 
+**/.runner_system_id

@@ -12,6 +12,7 @@ services:
     #  - "3000:3000"
     volumes:
       - /home/sthinds/Volumes/grafana:/var/lib/grafana
+      - ./config/provisioning:/etc/grafana/provisioning
   telegraf:
     image: telegraf:1.16
     container_name: telegraf

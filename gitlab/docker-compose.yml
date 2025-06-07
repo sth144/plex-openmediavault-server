@@ -1,58 +1,53 @@
-version: "3.7"
+version: "3.8"
 
 services:
+  redis:
+    image: redis:7
+    restart: always
+    volumes:
+      - /home/sthinds/Volumes/gitlab/redis:/data
+  postgres:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: gitlab
+      POSTGRES_PASSWORD: gitlabpass
+      POSTGRES_DB: gitlabhq_production
+    volumes:
+      - /home/sthinds/Volumes/gitlab/postgresql:/var/lib/postgresql/data
   gitlab:
     image: gitlab/gitlab-ce:latest
-#    networks:
-#      - gitlab-network
     restart: always
+    hostname: gitlab.local
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://192.168.1.245:11080'
+        nginx['listen_port'] = 80
+        nginx['listen_https'] = false
+        gitlab_rails['db_adapter'] = 'postgresql'
+        gitlab_rails['db_encoding'] = 'utf8'
+        gitlab_rails['db_host'] = 'postgres'
+        gitlab_rails['db_port'] = 5432
+        gitlab_rails['db_username'] = 'gitlab'
+        gitlab_rails['db_password'] = 'gitlabpass'
+        gitlab_rails['redis_host'] = 'redis'
+        redis['enable'] = false
+        postgresql['enable'] = false    
     ports:
-      - "11443:443"
-      #- "11080:80"
-      - "11080:11080"
-      - "11022:22"
-#    environment:
-#      GITLAB_OMNIBUS_CONFIG: |
-#        external_url 'http://gitlab:11080'
-    #    gitlab_rails['gitlab_shell_ssh_port'] = 2224
+      - 11080:80
+      - 11443:443
+      - 11022:22
+    depends_on:
+      - redis
+      - postgres
     volumes:
-      - /home/sthinds/Volumes/gitlab/config:/etc/gitlab
+      - ./config:/etc/gitlab
       - /home/sthinds/Volumes/gitlab/logs:/var/log/gitlab
       - /home/sthinds/Volumes/gitlab/data:/var/opt/gitlab
-      - /home/sthinds/.ssh:/root/.ssh
-    depends_on:
-      - postgresql
-      - redis
-
   gitlab-runner:
-    image: 'gitlab/gitlab-runner:latest'
-#    networks:
-#      - gitlab-network
-    network_mode: host
+    image: gitlab/gitlab-runner:latest
+    container_name: gitlab-runner
     restart: always
     volumes:
       - ./config/runner:/etc/gitlab-runner
       - /var/run/docker.sock:/var/run/docker.sock
-    privileged: true
-    command: ["run", "--user=gitlab-runner", "--working-directory=/home/gitlab-runner"]
-
-  postgresql:
-    image: postgres:latest
-    restart: always
-    environment:
-      POSTGRES_USER: gitlab
-      POSTGRES_PASSWORD: gitlab
-      POSTGRES_DB: gitlabhq_production
-    volumes:
-      - /home/sthinds/Volumes/gitlab/postgresql:/var/lib/postgresql
-
-  redis:
-    image: redis:latest
-    restart: always
-    volumes:
-      - /home/sthinds/Volumes/gitlab/redis:/data
-
-networks:
-  gitlab-network:
-    driver: bridge
-

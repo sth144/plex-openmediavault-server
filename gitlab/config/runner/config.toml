@@ -1,0 +1,130 @@
+concurrent = 100
+check_interval = 0
+connection_max_age = "15m0s"
+shutdown_timeout = 0
+
+[session_server]
+  session_timeout = 1800
+
+[[runners]]
+  name = "Main Runner"
+  url = "https://gitlab.sth144.duckdns.org/"
+  id = 0
+  token = "glrt-N8yDPpqYzvAaP-GoMi98"
+  token_obtained_at = 0001-01-01T00:00:00Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "shell"
+
+[[runners]]
+  name = "gitlab-runner run"
+  url = "https://gitlab.sth144.duckdns.org"
+  id = 5
+  token = "glrt-N8yDPpqYzvAaP-GoMi98"
+  token_obtained_at = 2024-11-21T02:17:37Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "shell"
+  [runners.cache]
+    MaxUploadedArchiveSize = 0
+    [runners.cache.s3]
+    [runners.cache.gcs]
+    [runners.cache.azure]
+
+#[[runners]]
+#  name = "Docker"
+#  url = "http://192.168.1.245:11080"
+#  id = 38
+#  token = "WGxsjiARB4Qj57bmGPum"
+#  token_obtained_at = 2024-11-21T04:59:15Z
+#  token_expires_at = 0001-01-01T00:00:00Z
+#  executor = "docker"
+#  [runners.cache]
+#    MaxUploadedArchiveSize = 0
+#    [runners.cache.s3]
+#    [runners.cache.gcs]
+#    [runners.cache.azure]
+#  [runners.docker]
+#    tls_verify = false
+#    image = "debian"
+#    privileged = false
+#    disable_entrypoint_overwrite = false
+#    oom_kill_disable = false
+#    disable_cache = false
+#    volumes = ["/cache"]
+#    network_mode = "host"
+#    shm_size = 0
+#    network_mtu = 0
+
+[[runners]]
+  name = "Docker"
+  # name = "gitlab-ci-docker"
+  url = "http://192.168.1.245:11080"
+  id = 39
+  token = "glrt-8NuyRJt9yVR64Mymtyzw"
+  token_obtained_at = 2024-11-27T03:12:23Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "docker"
+  [runners.cache]
+    MaxUploadedArchiveSize = 0
+    [runners.cache.s3]
+    [runners.cache.gcs]
+    [runners.cache.azure]
+  [runners.docker]
+    tls_verify = false
+    image = "debian"
+    privileged = true 
+    disable_entrypoint_overwrite = false
+    oom_kill_disable = false
+    disable_cache = false
+    volumes = ["/var/run/docker.sock:/var/run/docker.sock", "/cache"]
+    shm_size = 0
+    network_mtu = 0
+
+[[runners]]
+  name = "k8s-runner"
+  url = ""
+  id = 0
+  token = ""
+  token_obtained_at = 0001-01-01T00:00:00Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "kubernetes"
+  [runners.kubernetes]
+    host = ""
+    bearer_token_overwrite_allowed = false
+    image = ""
+    namespace = ""
+    namespace_overwrite_allowed = ""
+    namespace_per_job = false
+    node_selector_overwrite_allowed = ""
+    node_tolerations_overwrite_allowed = ""
+    helper_image = "registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:arm64-latest"
+    pod_labels_overwrite_allowed = ""
+    service_account_overwrite_allowed = ""
+    pod_annotations_overwrite_allowed = ""
+    [runners.kubernetes.node_selector]
+      "kubernetes.io/arch" = "arm64"
+    [runners.kubernetes.volumes]
+    [runners.kubernetes.dns_config]
+
+[[runners]]
+  name = "local-runner"
+  url = "http://192.168.1.245:11080"
+  id = 1
+  token = "glrtr-GJeYxLAb_2j-wRoKXrsg"
+  token_obtained_at = 2025-04-18T23:38:24Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "docker"
+  [runners.cache]
+    MaxUploadedArchiveSize = 0
+    [runners.cache.s3]
+    [runners.cache.gcs]
+    [runners.cache.azure]
+  [runners.docker]
+    tls_verify = false
+    image = "docker:latest"
+    privileged = true
+    disable_entrypoint_overwrite = false
+    oom_kill_disable = false
+    disable_cache = false
+    volumes = ["/var/run/docker.sock:/var/run/docker.sock", "/cache"]
+    shm_size = 0
+    network_mtu = 0

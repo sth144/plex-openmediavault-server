@@ -20,7 +20,7 @@ scrape_configs:
     static_configs:
       - targets: [
           # localhost
-	  "192.168.1.245:9100",
+	        "192.168.1.245:9100",
           "192.168.1.245:9091"
         ]
   - job_name: "node_exporter_RPi_pc0"
@@ -50,6 +50,7 @@ scrape_configs:
       - targets: [
           # TODO: DNS!!! sthinds.local
           "192.168.1.235:9100",
+          "192.168.1.235:9400",
           "192.168.1.235:9091",
           "192.168.1.235:9835",
           "192.168.1.235:9836"
