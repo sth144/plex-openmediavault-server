@@ -974,9 +974,22 @@
           "legendFormat": "{{mountpoint}}",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "YUDDM8dnz"
+          },
+          "editorMode": "code",
+          "expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"/\",fstype!=\"rootfs\",job=\"node_exporter_openmediavault\"} * 100) /            node_filesystem_size_bytes{mountpoint=\"/\",fstype!=\"rootfs\",job=\"node_exporter_openmediavault\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{mountpoint}}",
+          "range": true,
+          "refId": "B"
         }
       ],
-      "title": "Disk (O)",
+      "title": "Disk",
       "type": "bargauge"
     },
     {
@@ -1078,6 +1091,19 @@
           "intervalFactor": 2,
           "legendFormat": "{{mountpoint}}",
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "YUDDM8dnz"
+          },
+          "editorMode": "code",
+          "expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_openmediavault\",device!~'rootfs',mountpoint=\"/\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_openmediavault\",device!~'rootfs',mountpoint=\"/\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
         }
       ],
       "timeFrom": "now-30d",
@@ -1242,6 +1268,7 @@
           "refId": "A"
         }
       ],
+      "timeFrom": "now-30d",
       "title": "Plex",
       "type": "logs"
     },
@@ -1360,7 +1387,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -1428,7 +1456,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1528,7 +1557,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1658,7 +1688,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1728,7 +1759,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1857,7 +1889,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1929,7 +1962,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -2028,7 +2062,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2139,7 +2174,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2211,7 +2247,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2316,7 +2353,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2415,7 +2453,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2605,7 +2644,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -2672,7 +2712,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2772,7 +2813,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2936,7 +2978,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3065,7 +3108,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3136,7 +3180,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -3233,7 +3278,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3384,7 +3430,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3440,6 +3487,7 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
         "uid": "YUDDM8dnz"
       },
@@ -3488,7 +3536,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3526,10 +3575,12 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
-          "expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_RPi_pc0\",device=\"/dev/root\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_RPi_pc0\",device=\"/dev/root\"})",
+          "editorMode": "code",
+          "expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_RPi_pc0\",mountpoint=\"/\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_RPi_pc0\",mountpoint=\"/\"})",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{mountpoint}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -3585,7 +3636,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3698,7 +3750,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -3765,7 +3818,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3865,7 +3919,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3989,7 +4044,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4058,7 +4114,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4187,7 +4244,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4258,7 +4316,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -4355,7 +4414,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4466,7 +4526,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4537,7 +4598,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4593,6 +4655,7 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
         "uid": "YUDDM8dnz"
       },
@@ -4641,7 +4704,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4679,10 +4743,12 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
-          "expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_RPi_pc1\",device=\"/dev/root\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_RPi_pc1\",device=\"/dev/root\"})",
+          "editorMode": "code",
+          "expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_RPi_pc1\",mountpoint=\"/\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_RPi_pc1\",mountpoint=\"/\"})",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{mountpoint}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -4738,7 +4804,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4847,6 +4914,7 @@
           "refId": "A"
         }
       ],
+      "timeFrom": "now-30d",
       "title": "PiHole",
       "type": "logs"
     },
@@ -4881,7 +4949,7 @@
             "uid": "QcyFG8Onk"
           },
           "editorMode": "code",
-          "expr": "{host=~\"pc.*\", filename=~\"in\"}",
+          "expr": "{host=~\"pc.*\", filename=~\".*ingress.*\"}",
           "legendFormat": "",
           "queryType": "range",
           "refId": "A"
@@ -4931,7 +4999,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -4998,7 +5067,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5098,7 +5168,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5222,7 +5293,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5292,7 +5364,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5421,7 +5494,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5492,7 +5566,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -5589,7 +5664,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5700,7 +5776,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5772,7 +5849,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5828,6 +5906,7 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
         "uid": "YUDDM8dnz"
       },
@@ -5876,7 +5955,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5914,10 +5994,12 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
-          "expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_RPi_pc2\",device=\"/dev/root\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_RPi_pc2\",device=\"/dev/root\"})",
+          "editorMode": "code",
+          "expr": "100 - ((node_filesystem_avail_bytes{job=\"node_exporter_RPi_pc2\",mountpoint=\"/\"} * 100) / node_filesystem_size_bytes{job=\"node_exporter_RPi_pc2\",mountpoint=\"/\"})",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{mountpoint}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -5973,7 +6055,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -6133,7 +6216,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -6418,6 +6502,7 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
         "uid": "YUDDM8dnz"
       },
@@ -6431,7 +6516,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -6471,9 +6557,11 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
-          "expr": "node_time_seconds{job=\"node_exporter_desktop\"} - node_boot_time_seconds{job=\"node_exporter_desktop\"}",
+          "editorMode": "code",
+          "expr": "time() - node_boot_time_seconds{job=\"node_exporter_desktop\"}",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -6482,6 +6570,7 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
         "uid": "YUDDM8dnz"
       },
@@ -6498,7 +6587,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -6540,10 +6630,12 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "(((count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_desktop\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode=\"idle\",job=\"node_exporter_desktop\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{mode=\"system\",job=\"node_exporter_desktop\"}) by (cpu))",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -6599,7 +6691,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -6723,7 +6816,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -6793,7 +6887,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -6907,6 +7002,7 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
         "uid": "YUDDM8dnz"
       },
@@ -6922,7 +7018,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -6962,11 +7059,12 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "nvidia_smi_gpu_info{uuid=\"$gpu\"}",
+          "expr": "DCGM_FI_DEV_MEM_CLOCK{job=\"node_exporter_desktop\"}\n  * on(UUID) group_left(modelName)\n    DCGM_FI_DEV_SM_CLOCK{job=\"node_exporter_desktop\"}\n",
           "instant": true,
           "interval": "",
-          "legendFormat": "{{name}}",
+          "legendFormat": "{{modelName}} ",
           "refId": "A"
         },
         {
@@ -6974,6 +7072,7 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "nvidia_smi_gpu_info{uuid=\"$gpu\"}",
           "hide": false,
@@ -6988,6 +7087,7 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
         "uid": "YUDDM8dnz"
       },
@@ -7000,8 +7100,10 @@
             "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisLabel": "Utilization %",
+            "axisPlacement": "left",
+            "axisSoftMax": 110,
+            "axisSoftMin": -10,
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
@@ -7034,7 +7136,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -7072,11 +7175,13 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "nvidia_smi_utilization_memory_ratio{uuid=\"$gpu\"}",
+          "expr": "100 * DCGM_FI_DEV_FB_USED{job=\"node_exporter_desktop\"} / (DCGM_FI_DEV_FB_FREE{job=\"node_exporter_desktop\"} + DCGM_FI_DEV_FB_USED{job=\"node_exporter_desktop\"})",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Memory Utilization (%)",
+          "range": true,
           "refId": "A"
         },
         {
@@ -7110,7 +7215,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -7167,6 +7273,7 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
         "uid": "YUDDM8dnz"
       },
@@ -7183,7 +7290,8 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "#EAB839",
@@ -7229,10 +7337,12 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "nvidia_smi_utilization_gpu_ratio{uuid=\"$gpu\"}",
+          "expr": "DCGM_FI_DEV_GPU_UTIL{job=\"node_exporter_desktop\"}",
           "interval": "",
           "legendFormat": "{{uuid}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -7241,6 +7351,7 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
         "uid": "YUDDM8dnz"
       },
@@ -7257,7 +7368,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "#EAB839",
@@ -7303,10 +7415,12 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "nvidia_smi_temperature_gpu{uuid=\"$gpu\"}",
+          "expr": "DCGM_FI_DEV_GPU_TEMP{job=\"node_exporter_desktop\"}",
           "interval": "",
           "legendFormat": "{{uuid}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -7315,6 +7429,7 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
         "uid": "YUDDM8dnz"
       },
@@ -7327,8 +7442,8 @@
             "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
+            "axisLabel": "W; °C",
+            "axisPlacement": "left",
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
@@ -7361,7 +7476,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -7387,6 +7503,9 @@
           "placement": "bottom",
           "showLegend": true
         },
+        "timezone": [
+          ""
+        ],
         "tooltip": {
           "mode": "multi",
           "sort": "none"
@@ -7399,11 +7518,13 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "nvidia_smi_power_draw_watts{uuid=\"$gpu\"}",
+          "expr": "DCGM_FI_DEV_POWER_USAGE{job=\"node_exporter_desktop\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Power Draw (W)",
+          "range": true,
           "refId": "B"
         },
         {
@@ -7411,11 +7532,13 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "nvidia_smi_temperature_gpu{uuid=\"$gpu\"}",
+          "expr": "DCGM_FI_DEV_GPU_TEMP{job=\"node_exporter_desktop\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Temperature (C)",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -7472,7 +7595,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -7534,6 +7658,7 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
         "uid": "YUDDM8dnz"
       },
@@ -7550,7 +7675,8 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "#EAB839",
@@ -7596,10 +7722,12 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "nvidia_smi_memory_used_bytes{uuid=\"$gpu\"} / nvidia_smi_memory_total_bytes{uuid=\"$gpu\"}",
+          "expr": "DCGM_FI_DEV_FB_USED{job=\"node_exporter_desktop\"} / (DCGM_FI_DEV_FB_FREE{job=\"node_exporter_desktop\"} + DCGM_FI_DEV_FB_USED{job=\"node_exporter_desktop\"})",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -7608,6 +7736,7 @@
     },
     {
       "datasource": {
+        "default": true,
         "type": "prometheus",
         "uid": "YUDDM8dnz"
       },
@@ -7624,7 +7753,8 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "#EAB839",
@@ -7670,10 +7800,12 @@
             "type": "prometheus",
             "uid": "YUDDM8dnz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "nvidia_smi_utilization_memory_ratio{uuid=\"$gpu\"}",
+          "expr": "DCGM_FI_DEV_MEM_COPY_UTIL{job=\"node_exporter_desktop\"}",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -7697,7 +7829,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -7768,7 +7901,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -7865,7 +7999,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -8009,7 +8144,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -8098,7 +8234,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -8171,9 +8308,10 @@
     "list": [
       {
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "a07679ce-454e-a0f5-28bc-629461dd23aa",
-          "value": "a07679ce-454e-a0f5-28bc-629461dd23aa"
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -8205,6 +8343,6 @@
   "timezone": "",
   "title": "Resource Overview",
   "uid": "UenQXXggz",
-  "version": 84,
+  "version": 96,
   "weekStart": ""
 }
