@@ -55,3 +55,8 @@ scrape_configs:
           "192.168.1.235:9835",
           "192.168.1.235:9836"
         ]
+  - job_name: "node_exporter_macbook_m4"
+    static_configs:
+      - targets: [
+          "192.168.1.236:9100"
+        ]
