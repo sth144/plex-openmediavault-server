@@ -6,6 +6,9 @@ openvpn/certs/*
 **.log
 **/*.sqlite3
 
+cryze/*
+!cryze/docker-compose.yml
+
 gitlab/data
 gitlab/config/gitlab-secrets.json
 gitlab/config/initial_root_password

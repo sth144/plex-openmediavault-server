@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  litellm:
+    image: ghcr.io/berriai/litellm:main
+    container_name: litellm
+    ports:
+      - "4000:4000"
+    environment:
+      - LITELLM_MODEL_NAME=llama3
+      - LITELLM_MODEL_API_BASE=http://sthinds.local:11434
+      - LITELLM_MODEL_API_KEY=dummy
+    command: >
+      --model llama3
+      --model_api_base http://sthinds.local:11434
+      --port 4000
+      --drop_params model
+    restart: unless-stopped
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    ports:
+      - "3001:8080"
+    volumes:
+      - /home/sthinds/Volumes/litellm/open-webui:/app/backend/data
+    environment:
+      - OPENAI_API_BASE_URL=http://litellm:4000/v1
+      - DEFAULT_OPENAI_API_KEY=dummy
+      - 'WEBUI_SECRET_KEY='
+      - 'OLLAMA_BASE_URL=http://sthinds.local:11434'
+    depends_on:
+      - litellm
+    restart: unless-stopped
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
