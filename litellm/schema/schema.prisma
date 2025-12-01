@@ -1,0 +1,9 @@
+      - /home/sthinds/Volumes/litellm/prisma/schema.prisma:/app/schema.prisma   # 👈 override schema
+generator client {
+  provider = "prisma-client-py"
+}
+
+datasource client {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}

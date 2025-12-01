@@ -1,0 +1,13 @@
+---
+version: "2.1"
+services:
+  kavita:
+    image: jvmilazz0/kavita:latest
+    container_name: kavita
+    ports:
+      - 8181:5000
+    volumes:
+      - /home/sthinds/data/Documents:/books/Documents
+      - /home/sthinds/data/Literature:/books/Literature
+      - ./config:/kavita/config
+    restart: unless-stopped

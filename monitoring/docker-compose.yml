@@ -74,11 +74,12 @@ services:
     restart: always
     #ports:
     #  - 3100:3100
-    command: -config.file=/etc/loki/local-config.yaml
+    command: -config.file=/etc/loki/config.yaml
     network_mode: host
     volumes:
       - ./config/loki-config.yaml:/etc/loki/config.yaml
-      - /home/sthinds/Volumes/loki:/data/loki
+      - /home/sthinds/Volumes/loki:/loki
+      - /home/sthinds/Volumes/loki-wal:/wal     
   promtail:
     #image: grafana/promtail:2.0.0
     image: grafana/promtail:latest

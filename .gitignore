@@ -5,6 +5,9 @@ openvpn/certs/*
 **/log/*
 **.log
 **/*.sqlite3
+**/*.db
+**/*.db-wal
+**/*.db-shm
 
 cryze/*
 !cryze/docker-compose.yml
@@ -21,3 +24,5 @@ gitlab/runner
 paperless-ng/config
 
 **/.runner_system_id
+
+kavita/config/*

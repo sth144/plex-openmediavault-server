@@ -2,19 +2,20 @@ version: '3.8'
 
 services:
   litellm:
-    image: ghcr.io/berriai/litellm:main
+    image: ghcr.io/berriai/litellm:main-stable
     container_name: litellm
     ports:
       - "4000:4000"
     environment:
-      - LITELLM_MODEL_NAME=llama3
-      - LITELLM_MODEL_API_BASE=http://sthinds.local:11434
-      - LITELLM_MODEL_API_KEY=dummy
-    command: >
-      --model llama3
-      --model_api_base http://sthinds.local:11434
-      --port 4000
-      --drop_params model
+      - LITELLM_CONFIG_PATH=/app/litellm.config.yaml
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - LITELLM_DISABLE_DB=true       # 👈 disable DB completely
+      - LITELLM_BYPASS_AUTH=true      # 👈 bypass API key auth
+      - LITELLM_PROXY_DISABLE_AUTH=true
+    volumes:
+      - /home/sthinds/Volumes/litellm/litellm.config.yaml:/app/litellm.config.yaml
+    entrypoint: >
+      litellm --config /app/litellm.config.yaml --port 4000 
     restart: unless-stopped
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
@@ -24,10 +25,10 @@ services:
     volumes:
       - /home/sthinds/Volumes/litellm/open-webui:/app/backend/data
     environment:
-      - OPENAI_API_BASE_URL=http://litellm:4000/v1
+      - OPENAI_API_BASE_URL=http://192.168.1.245:4000/v1
       - DEFAULT_OPENAI_API_KEY=dummy
       - 'WEBUI_SECRET_KEY='
-      - 'OLLAMA_BASE_URL=http://sthinds.local:11434'
+      - 'OLLAMA_BASE_URL=http://192.168.1.235:11434'
     depends_on:
       - litellm
     restart: unless-stopped
