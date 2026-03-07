@@ -1,4 +1,4 @@
-version: "3.8"
+version: "2.4"
 
 services:
   redis:
@@ -6,15 +6,41 @@ services:
     restart: always
     volumes:
       - /home/sthinds/Volumes/gitlab/redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 512m
+    cpus: 0.5
   postgres:
     image: postgres:14
     restart: always
     environment:
       POSTGRES_USER: gitlab
-      POSTGRES_PASSWORD: gitlabpass
+      POSTGRES_PASSWORD: ${GITLAB_DB_PASSWORD}
       POSTGRES_DB: gitlabhq_production
+    env_file:
+      - .env
     volumes:
       - /home/sthinds/Volumes/gitlab/postgresql:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gitlab -d gitlabhq_production"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 1024m
+    cpus: 1.0
   gitlab:
     image: gitlab/gitlab-ce:latest
     restart: always
@@ -29,21 +55,37 @@ services:
         gitlab_rails['db_host'] = 'postgres'
         gitlab_rails['db_port'] = 5432
         gitlab_rails['db_username'] = 'gitlab'
-        gitlab_rails['db_password'] = 'gitlabpass'
+        gitlab_rails['db_password'] = '${GITLAB_DB_PASSWORD}'
         gitlab_rails['redis_host'] = 'redis'
         redis['enable'] = false
         postgresql['enable'] = false    
+    env_file:
+      - .env
     ports:
       - 11080:80
       - 11443:443
       - 11022:22
     depends_on:
-      - redis
-      - postgres
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
     volumes:
       - ./config:/etc/gitlab
       - /home/sthinds/Volumes/gitlab/logs:/var/log/gitlab
       - /home/sthinds/Volumes/gitlab/data:/var/opt/gitlab
+    healthcheck:
+      test: ["CMD-SHELL", "gitlab-ctl status >/dev/null 2>&1"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "5"
+    mem_limit: 4096m
+    cpus: 2.0
   gitlab-runner:
     image: gitlab/gitlab-runner:latest
     container_name: gitlab-runner
@@ -51,3 +93,13 @@ services:
     volumes:
       - ./config/runner:/etc/gitlab-runner
       - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      gitlab:
+        condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 512m
+    cpus: 0.5

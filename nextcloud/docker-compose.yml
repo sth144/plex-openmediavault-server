@@ -1,4 +1,4 @@
-version: "3.3"
+version: "2.4"
 
 services:
   db:
@@ -15,7 +15,20 @@ services:
     env_file:
       - .env.MYSQL_ROOT_PASSWORD
       - .env.MYSQL_PASSWORD
+      - .env
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u nextcloud -p$${MYSQL_PASSWORD} >/dev/null 2>&1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 2048m
+    cpus: 1.0
   
   redis:
     image: redis:4.0-alpine
@@ -26,6 +39,20 @@ services:
     command: redis-server --requirePass "$REDIS_HOST_PASSWORD"
     volumes:
       - /home/sthinds/Volumes/nextcloud/redis:/var/lib/redis
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 512m
+    cpus: 0.5
 
   app:
     build: .
@@ -35,8 +62,10 @@ services:
       - 9443:443
       - 9080:80
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     volumes:
       - ./config:/var/www/html/config
       - /home/sthinds/Volumes/nextcloud/app:/var/www/html
@@ -48,7 +77,21 @@ services:
       - VIRTUAL_HOST=sthinds144.duckdns.org
       - REDIS_HOST=redis
       - REDIS_HOST_PASSWORD=$REDIS_HOST_PASSWORD
+    env_file:
+      - .env
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/status.php >/dev/null 2>&1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 2048m
+    cpus: 1.0
 
 volumes:
   nextcloud:

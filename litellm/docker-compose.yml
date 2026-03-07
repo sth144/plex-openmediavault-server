@@ -1,4 +1,4 @@
-version: '3.8'
+version: '2.4'
 
 services:
   litellm:
@@ -6,17 +6,30 @@ services:
     container_name: litellm
     ports:
       - "4000:4000"
+    env_file:
+      - .env
     environment:
       - LITELLM_CONFIG_PATH=/app/litellm.config.yaml
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - LITELLM_DISABLE_DB=true       # 👈 disable DB completely
-      - LITELLM_BYPASS_AUTH=true      # 👈 bypass API key auth
-      - LITELLM_PROXY_DISABLE_AUTH=true
+      - LITELLM_MASTER_KEY=${LITELLM_MASTER_KEY}
     volumes:
       - /home/sthinds/Volumes/litellm/litellm.config.yaml:/app/litellm.config.yaml
     entrypoint: >
       litellm --config /app/litellm.config.yaml --port 4000 
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget -S -O /dev/null --header=\"Authorization: Bearer $${LITELLM_MASTER_KEY}\" http://127.0.0.1:4000/health 2>&1 | grep -Eq 'HTTP/[0-9.]+ (200|400|401)'"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 1024m
+    cpus: 1.0
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
@@ -24,14 +37,28 @@ services:
       - "3001:8080"
     volumes:
       - /home/sthinds/Volumes/litellm/open-webui:/app/backend/data
+    env_file:
+      - .env
     environment:
       - OPENAI_API_BASE_URL=http://192.168.1.245:4000/v1
-      - DEFAULT_OPENAI_API_KEY=dummy
-      - 'WEBUI_SECRET_KEY='
+      - DEFAULT_OPENAI_API_KEY=${LITELLM_MASTER_KEY}
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}
       - 'OLLAMA_BASE_URL=http://192.168.1.235:11434'
     depends_on:
-      - litellm
+      litellm:
+        condition: service_healthy
     restart: unless-stopped
     extra_hosts:
       - host.docker.internal:host-gateway
-
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/health >/dev/null 2>&1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 1024m
+    cpus: 1.0

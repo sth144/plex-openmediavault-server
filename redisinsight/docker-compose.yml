@@ -6,3 +6,15 @@ services:
       - 8002:8001
     volumes:
       - /home/sthinds/Volumes/redisinsight:/db
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8001/ >/dev/null 2>&1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 512m
+    cpus: 0.5

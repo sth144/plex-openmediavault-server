@@ -11,3 +11,15 @@ services:
       - /home/sthinds/data/Literature:/books/Literature
       - ./config:/kavita/config
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:5000/ >/dev/null 2>&1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 1024m
+    cpus: 1.0
