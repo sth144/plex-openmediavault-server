@@ -1,0 +1,12 @@
+{
+  "pollIntervalSeconds": 30,
+  "retentionDays": 14,
+  "dataDirectory": "/images",
+  "bridgeUrl": "http://192.168.1.231:5000",
+  "imageQuality": 80,
+  "maxImageWidth": 1280,
+  "playbackFps": 12,
+  "maxPlaybackFrames": 1000,
+  "pollConcurrency": 2,
+  "cameras": []
+}

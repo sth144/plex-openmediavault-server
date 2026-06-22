@@ -1,0 +1,22 @@
+services:
+  wyze-timelapse:
+    build:
+      context: /usr/local/src/wyze-timelapse
+    image: wyze-timelapse:local
+    container_name: wyze-timelapse
+    restart: unless-stopped
+    ports:
+      - "8095:8080"
+    environment:
+      WYZE_BRIDGE_URL: "http://192.168.1.231:5000"
+      DATA_DIR: "/images"
+      CONFIG_DIR: "/config"
+      POLL_INTERVAL_SECONDS: "30"
+      RETENTION_DAYS: "14"
+      IMAGE_QUALITY: "80"
+      MAX_IMAGE_WIDTH: "1280"
+      MAX_PLAYBACK_FRAMES: "1000"
+      POLL_CONCURRENCY: "2"
+    volumes:
+      - /home/sthinds/data/Images:/images
+      - ./config:/config
