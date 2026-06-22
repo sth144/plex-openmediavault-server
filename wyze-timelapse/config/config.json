@@ -8,5 +8,31 @@
   "playbackFps": 12,
   "maxPlaybackFrames": 1000,
   "pollConcurrency": 2,
-  "cameras": []
+  "cameras": [
+    {
+      "name": "Bear Cam",
+      "nameUri": "bear-cam",
+      "enabled": true
+    },
+    {
+      "name": "Chihuahueño Cam",
+      "nameUri": "chihuahueo-cam",
+      "enabled": true
+    },
+    {
+      "name": "Driveway Cam",
+      "nameUri": "driveway-cam",
+      "enabled": true
+    },
+    {
+      "name": "Garage Cam",
+      "nameUri": "garage-cam",
+      "enabled": true
+    },
+    {
+      "name": "Living Room Cam",
+      "nameUri": "living-room-cam",
+      "enabled": true
+    }
+  ]
 }
