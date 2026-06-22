@@ -15,6 +15,7 @@ services:
       RETENTION_DAYS: "14"
       IMAGE_QUALITY: "80"
       MAX_IMAGE_WIDTH: "1280"
+      MIN_SNAPSHOT_BYTES: "4096"
       MAX_PLAYBACK_FRAMES: "1000"
       POLL_CONCURRENCY: "2"
     volumes:
